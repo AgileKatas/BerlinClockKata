@@ -8,7 +8,7 @@ public class BerlinClock {
 
     public String convert(String time) {
         String[] parts = time.split(":");
-        String clock = "O";
+        String clock = "Y";
 
         int hours = Integer.parseInt(parts[0]);
         int minutes = Integer.parseInt(parts[1]);
