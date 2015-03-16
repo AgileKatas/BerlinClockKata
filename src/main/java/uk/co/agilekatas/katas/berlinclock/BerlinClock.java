@@ -2,24 +2,48 @@ package uk.co.agilekatas.katas.berlinclock;
 
 public class BerlinClock {
 
+    private static final String RED_LAMP = "R";
+    private static final String YELLOW_LAMP = "Y";
+    private static final String OFF_LAMP = "O";
+
     public String convert(String time) {
         String[] parts = time.split(":");
-        String clock = "OOOOOOOOOOOOOOOOOOOO";
+        String clock = "OOOOOOOOO";
 
         int minutes = Integer.parseInt(parts[1]);
-        String singleMinutes = calculateSingleMinutes(minutes);
+        String fiveMinutes = calculateFiveMinutesRow(minutes);
+        String singleMinutes = calculateSingleMinutesRow(minutes);
 
-        return clock + singleMinutes;
+        return clock + fiveMinutes + singleMinutes;
     }
 
-    private String calculateSingleMinutes(int minutes) {
-        String singleMinutes = "";
-        int remainder = minutes % 5;
-        for(int i = 1; i <=4; i++) {
-            if (i <= remainder) {
-                singleMinutes += "Y";
+    private String calculateFiveMinutesRow(int minutes) {
+        String fiveMinutes = "";
+        int lamps = minutes / 5;
+        for (int i = 1; i <= 11; i++) {
+            if (i <= lamps) {
+                fiveMinutes += redOrYellowLamp(i);
             } else {
-                singleMinutes += "O";
+                fiveMinutes += OFF_LAMP;
+            }
+        }
+        return fiveMinutes;
+    }
+
+    private String redOrYellowLamp(int lampNumber) {
+        if (lampNumber % 3 == 0)
+            return RED_LAMP;
+        return YELLOW_LAMP;
+    }
+
+    private String calculateSingleMinutesRow(int minutes) {
+        String singleMinutes = "";
+        int lamps = minutes % 5;
+        for (int i = 1; i <= 4; i++) {
+            if (i <= lamps) {
+                singleMinutes += YELLOW_LAMP;
+            } else {
+                singleMinutes += OFF_LAMP;
             }
         }
         return singleMinutes;
