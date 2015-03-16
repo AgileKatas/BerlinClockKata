@@ -42,3 +42,17 @@ Feature: Converting Digital Time to Berlin Time
     | 08:23:00 | RRRO |
     | 14:35:00 | RRRR |
 
+
+  Scenario Outline: Implement the Five Hours Row
+    Given I have started the converter
+    When I enter <time>
+    Then <row> is returned for the five hours row
+
+  Examples:
+    | time     | row  |
+    | 00:00:00 | OOOO |
+    | 23:59:59 | RRRR |
+    | 02:04:00 | OOOO |
+    | 08:23:00 | ROOO |
+    | 16:35:00 | RRRO |
+

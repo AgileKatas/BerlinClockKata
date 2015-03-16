@@ -35,8 +35,14 @@ public class BerlinClockStepdefs {
     }
 
     @Then("^([^\"]*) is returned for the single hours row$")
-    public void _row_is_returned_for_the_single_hors_row(String row) {
+    public void _row_is_returned_for_the_single_hours_row(String row) {
         String singleHours = clock.substring(5, 9);
         assertThat(singleHours).isEqualTo(row);
+    }
+
+    @Then("^([^\"]*) is returned for the five hours row$")
+    public void _row_is_returned_for_the_five_hours_row(String row) {
+        String fiveHours = clock.substring(1, 5);
+        assertThat(fiveHours).isEqualTo(row);
     }
 }
