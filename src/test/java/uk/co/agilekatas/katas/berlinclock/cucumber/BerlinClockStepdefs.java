@@ -27,4 +27,10 @@ public class BerlinClockStepdefs {
         String singleMinutesRow = clock.substring(20, 24);
         assertThat(singleMinutesRow).isEqualTo(row);
     }
+
+    @Then("^([^\"]*) is returned for the five minutes row$")
+    public void _row_is_returned_for_the_five_minutes_row(String row) {
+        String fiveMinutesRow = clock.substring(9, 20);
+        assertThat(fiveMinutesRow).isEqualTo(row);
+    }
 }
