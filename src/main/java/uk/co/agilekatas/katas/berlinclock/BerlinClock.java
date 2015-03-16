@@ -9,16 +9,12 @@ public class BerlinClock {
         int minutes = Integer.parseInt(parts[1]);
         String singleMinutes = calculateSingleMinutes(minutes);
 
-        String s = clock + singleMinutes;
-        System.out.println(s);
-        return s;
+        return clock + singleMinutes;
     }
 
     private String calculateSingleMinutes(int minutes) {
         String singleMinutes = "";
-        System.out.println(minutes);
         int remainder = minutes % 5;
-        System.out.println(remainder);
         for(int i = 1; i <=4; i++) {
             if (i <= remainder) {
                 singleMinutes += "Y";
@@ -26,7 +22,6 @@ public class BerlinClock {
                 singleMinutes += "O";
             }
         }
-        System.out.println(singleMinutes);
         return singleMinutes;
     }
 
