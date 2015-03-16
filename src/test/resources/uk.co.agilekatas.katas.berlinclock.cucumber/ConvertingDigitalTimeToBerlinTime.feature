@@ -64,6 +64,6 @@ Feature: Converting Digital Time to Berlin Time
 
   Examples:
     | time     | lamp |
-    | 00:00:00 | O    |
-    | 23:59:59 | Y    |
+    | 00:00:00 | Y    |
+    | 23:59:59 | O    |
 

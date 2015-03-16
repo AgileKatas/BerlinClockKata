@@ -16,6 +16,7 @@ public class BerlinClockTest {
     private static final String NO_FIVE_MINUTE_LAMPS = "OOOOOOOOOOO";
     private static final String FULL_ROW_FIVE_MINUTE_LAMPS = "YYRYYRYYRYY";
     private static final String SECONDS_LAMP_ON = "Y";
+    private static final String SECONDS_LAMP_OFF = "O";
 
     private static final int SINGLE_MINUTE_START = 20;
     private static final int SINGLE_MINUTE_END = 24;
@@ -118,6 +119,16 @@ public class BerlinClockTest {
 
         String secondsLamp = clock.substring(SECONDS_LAMP_START, SECONDS_LAMP_END);
         assertThat(secondsLamp).isEqualTo(SECONDS_LAMP_ON);
+    }
+
+    @Test
+    public void shouldReturnCorrectSecondsLampForJustBeforeMidnight() {
+        String time = JUST_BEFORE_MIDNIGHT;
+
+        String clock = berlinClock.convert(time);
+
+        String secondsLamp = clock.substring(SECONDS_LAMP_START, SECONDS_LAMP_END);
+        assertThat(secondsLamp).isEqualTo(SECONDS_LAMP_OFF);
     }
 
 }

@@ -8,17 +8,24 @@ public class BerlinClock {
 
     public String convert(String time) {
         String[] parts = time.split(":");
-        String clock = "Y";
 
         int hours = Integer.parseInt(parts[0]);
         int minutes = Integer.parseInt(parts[1]);
+        int seconds = Integer.parseInt(parts[2]);
 
-        String fiveHours = calculateFiveHoursRow(hours);
-        String singleHours = calculateSingleHoursRow(hours);
-        String fiveMinutes = calculateFiveMinutesRow(minutes);
-        String singleMinutes = calculateSingleMinutesRow(minutes);
+        String secondsLamp = calculateSecondsLamp(seconds);
+        String fiveHoursRow = calculateFiveHoursRow(hours);
+        String singleHoursRow = calculateSingleHoursRow(hours);
+        String fiveMinutesRow = calculateFiveMinutesRow(minutes);
+        String singleMinutesRow = calculateSingleMinutesRow(minutes);
 
-        return clock + fiveHours + singleHours + fiveMinutes + singleMinutes;
+        return secondsLamp + fiveHoursRow + singleHoursRow + fiveMinutesRow + singleMinutesRow;
+    }
+
+    private String calculateSecondsLamp(int seconds) {
+        if (seconds % 2 == 0)
+            return YELLOW_LAMP;
+        return OFF_LAMP;
     }
 
     private String calculateFiveHoursRow(int hours) {
