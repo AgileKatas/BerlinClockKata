@@ -67,3 +67,16 @@ Feature: Converting Digital Time to Berlin Time
     | 00:00:00 | Y    |
     | 23:59:59 | O    |
 
+
+  Scenario Outline: Integrate the Entire Berlin Clock
+    Given I have started the converter
+    When I enter <time>
+    Then <clock> is returned
+
+  Examples:
+    | time     | clock                    |
+    | 00:00:00 | YOOOOOOOOOOOOOOOOOOOOOOO |
+    | 23:59:59 | ORRRRRRROYYRYYRYYRYYYYYY |
+    | 16:50:06 | YRRROROOOYYRYYRYYRYOOOOO |
+    | 11:37:01 | ORROOROOOYYRYYRYOOOOYYOO |
+

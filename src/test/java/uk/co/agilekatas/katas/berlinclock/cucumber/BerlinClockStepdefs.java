@@ -51,4 +51,9 @@ public class BerlinClockStepdefs {
         String seconds = clock.substring(0, 1);
         assertThat(seconds).isEqualTo(lamp);
     }
+
+    @Then("^([^\"]*) is returned$")
+    public void _clock_is_returned(String clock) {
+        assertThat(clock).isEqualTo(this.clock);
+    }
 }
