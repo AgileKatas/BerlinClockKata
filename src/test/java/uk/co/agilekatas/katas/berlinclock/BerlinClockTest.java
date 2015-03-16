@@ -16,8 +16,10 @@ public class BerlinClockTest {
 
     private static final int SINGLE_MINUTE_START = 20;
     private static final int SINGLE_MINUTE_END = 24;
-    private static final int FIVE_MINUTES_START = 9;
+    private static final int FIVE_MINUTE_START = 9;
     private static final int FIVE_MINUTE_END = 20;
+    private static final int SINGLE_HOUR_START = 5;
+    private static final int SINGLE_HOUR_END = 9;
 
     private BerlinClock berlinClock = new BerlinClock();
 
@@ -47,8 +49,8 @@ public class BerlinClockTest {
 
         String clock = berlinClock.convert(time);
 
-        String singleMinutes = clock.substring(FIVE_MINUTES_START, FIVE_MINUTE_END);
-        assertThat(singleMinutes).isEqualTo(NO_FIVE_MINUTE_LAMPS);
+        String fiveMinutes = clock.substring(FIVE_MINUTE_START, FIVE_MINUTE_END);
+        assertThat(fiveMinutes).isEqualTo(NO_FIVE_MINUTE_LAMPS);
     }
 
     @Test
@@ -57,8 +59,18 @@ public class BerlinClockTest {
 
         String clock = berlinClock.convert(time);
 
-        String singleMinutes = clock.substring(FIVE_MINUTES_START, FIVE_MINUTE_END);
-        assertThat(singleMinutes).isEqualTo(FULL_ROW_FIVE_MINUTE_LAMPS);
+        String fiveMinutes = clock.substring(FIVE_MINUTE_START, FIVE_MINUTE_END);
+        assertThat(fiveMinutes).isEqualTo(FULL_ROW_FIVE_MINUTE_LAMPS);
+    }
+
+    @Test
+    public void shouldReturnCorrectSingleHoursRowForMidnight() {
+        String time = MIDNIGHT;
+
+        String clock = berlinClock.convert(time);
+
+        String singleHours = clock.substring(SINGLE_HOUR_START, SINGLE_HOUR_END);
+        assertThat(singleHours).isEqualTo(NO_LAMPS);
     }
 
 }
