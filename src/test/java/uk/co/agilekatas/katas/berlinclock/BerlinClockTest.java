@@ -21,6 +21,8 @@ public class BerlinClockTest {
     private static final int FIVE_MINUTE_END = 20;
     private static final int SINGLE_HOUR_START = 5;
     private static final int SINGLE_HOUR_END = 9;
+    private static final int FIVE_HOUR_START = 1;
+    private static final int FIVE_HOUR_END = 5;
 
     private BerlinClock berlinClock = new BerlinClock();
 
@@ -82,6 +84,16 @@ public class BerlinClockTest {
 
         String singleHours = clock.substring(SINGLE_HOUR_START, SINGLE_HOUR_END);
         assertThat(singleHours).isEqualTo(THREE_RED_LAMPS);
+    }
+
+    @Test
+    public void shouldReturnCorrectFiveHoursRowForMidnight() {
+        String time = MIDNIGHT;
+
+        String clock = berlinClock.convert(time);
+
+        String fiveHours = clock.substring(FIVE_HOUR_START, FIVE_HOUR_END);
+        assertThat(fiveHours).isEqualTo(NO_LAMPS);
     }
 
 }
