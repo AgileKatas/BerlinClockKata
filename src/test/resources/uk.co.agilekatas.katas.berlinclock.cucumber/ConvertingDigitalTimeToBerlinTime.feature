@@ -40,5 +40,5 @@ Feature: Converting Digital Time to Berlin Time
     | 23:59:59 | RRRO |
     | 02:04:00 | RROO |
     | 08:23:00 | RRRO |
-    | 16:35:00 | RRRR |
+    | 14:35:00 | RRRR |
 
