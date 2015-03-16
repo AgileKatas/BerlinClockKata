@@ -56,3 +56,14 @@ Feature: Converting Digital Time to Berlin Time
     | 08:23:00 | ROOO |
     | 16:35:00 | RRRO |
 
+
+  Scenario Outline: Implement the Seconds Lamp
+    Given I have started the converter
+    When I enter <time>
+    Then <lamp> is returned for the seconds lamp
+
+  Examples:
+    | time     | lamp |
+    | 00:00:00 | O    |
+    | 23:59:59 | Y    |
+

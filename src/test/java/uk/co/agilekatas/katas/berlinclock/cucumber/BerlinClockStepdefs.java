@@ -45,4 +45,10 @@ public class BerlinClockStepdefs {
         String fiveHours = clock.substring(1, 5);
         assertThat(fiveHours).isEqualTo(row);
     }
+
+    @Then("^([^\"]*) is returned for the seconds lamp$")
+    public void _lamp_is_returned_for_the_seconds_lamp(String lamp) {
+        String seconds = clock.substring(0, 1);
+        assertThat(seconds).isEqualTo(lamp);
+    }
 }
